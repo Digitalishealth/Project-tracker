@@ -1,13 +1,13 @@
 import { STATUS_COLORS, STATUS_LABELS, STATUSES } from '../../constants/enums'
 
 export default function StatusSelect({ status, onChange }) {
-  const colors = STATUS_COLORS[status] ?? STATUS_COLORS['']
+  const c = STATUS_COLORS[status] ?? STATUS_COLORS['']
   return (
     <select
       value={status}
       onClick={e => e.stopPropagation()}
       onChange={e => { e.stopPropagation(); onChange(e.target.value) }}
-      className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium cursor-pointer border-0 outline-none ring-0 ${colors.bg} ${colors.text}`}
+      className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium border cursor-pointer outline-none ${c.bg} ${c.text} ${c.border}`}
       style={{ WebkitAppearance: 'none', MozAppearance: 'none', appearance: 'none', backgroundImage: 'none' }}
     >
       {STATUSES.map(s => (

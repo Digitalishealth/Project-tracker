@@ -29,11 +29,11 @@ function ProjectCard({ project, onEdit, isDragging }) {
   return (
     <div
       onClick={() => onEdit(project)}
-      className={`bg-white rounded-xl border p-3 shadow-sm cursor-pointer hover:shadow-md transition-all select-none ${
+      className={`bg-white rounded-lg border p-3 cursor-pointer hover:shadow-md transition-all select-none ${
         isDragging ? 'opacity-50' :
         isComplete ? 'border-emerald-100 opacity-70' :
         overdue ? 'border-red-200 hover:border-red-300' :
-        'border-slate-100 hover:border-indigo-200'
+        'border-slate-100 hover:border-teal-200'
       }`}
     >
       <p className={`text-sm font-medium mb-2 ${isComplete ? 'line-through text-slate-400' : overdue ? 'text-red-700' : 'text-slate-900'}`}>
@@ -50,7 +50,7 @@ function ProjectCard({ project, onEdit, isDragging }) {
           </div>
           <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
             <div
-              className={`h-full rounded-full ${isComplete ? 'bg-emerald-400' : 'bg-indigo-400'}`}
+              className={`h-full rounded-full ${isComplete ? 'bg-emerald-400' : 'bg-teal-500'}`}
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -115,7 +115,7 @@ export default function KanbanView({ projects, onEdit, onStatusChange }) {
           <div className="mb-4 flex">
             <button
               onClick={() => setShowComplete(v => !v)}
-              className={`px-3 py-1.5 text-xs font-medium rounded-lg border transition-colors ${showComplete ? 'bg-emerald-50 border-emerald-200 text-emerald-700' : 'border-slate-200 text-slate-500 hover:bg-slate-50'}`}
+              className={`px-3 py-1.5 text-xs font-medium rounded-lg border transition-colors duration-150 ease-out ${showComplete ? 'bg-emerald-50 border-emerald-200 text-emerald-700' : 'border-slate-200 text-slate-500 hover:bg-slate-50'}`}
             >
               {showComplete ? `Hide completed column (${completeCount})` : `Show completed column (${completeCount})`}
             </button>
@@ -124,8 +124,8 @@ export default function KanbanView({ projects, onEdit, onStatusChange }) {
         <div className="overflow-x-auto flex-1">
           <div className="flex gap-4 min-w-max pb-4 h-full">
             {visibleColumns.map(col => (
-              <div key={col.id} id={col.id} className="w-72 flex flex-col bg-slate-50/80 rounded-xl border border-slate-200/70">
-                <div className="flex items-center gap-2 px-4 py-3 bg-white rounded-t-xl border-b border-slate-100">
+              <div key={col.id} id={col.id} className="w-72 flex flex-col bg-slate-50/80 rounded-lg border border-slate-200/70">
+                <div className="flex items-center gap-2 px-4 py-3 bg-white rounded-t-lg border-b border-slate-100">
                   <span className={`w-2 h-2 rounded-full ${col.color}`} />
                   <h3 className="text-sm font-semibold text-slate-700">{STATUS_LABELS[col.id]}</h3>
                   <span className="ml-auto text-xs font-medium text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full tabular-nums">
@@ -136,7 +136,7 @@ export default function KanbanView({ projects, onEdit, onStatusChange }) {
                   <div className="p-3 flex flex-col gap-2 flex-1 min-h-24">
                     {col.items.map(p => <SortableCard key={p.id} project={p} onEdit={onEdit} />)}
                     {col.items.length === 0 && (
-                      <div className="flex-1 flex items-center justify-center text-xs text-slate-300 border-2 border-dashed border-slate-200 rounded-xl py-8">
+                      <div className="flex-1 flex items-center justify-center text-xs text-slate-300 border-2 border-dashed border-slate-200 rounded-lg py-8">
                         Drop here
                       </div>
                     )}

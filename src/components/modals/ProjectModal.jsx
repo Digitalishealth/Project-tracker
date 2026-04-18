@@ -53,7 +53,7 @@ export default function ProjectModal({ isOpen, onClose, onSave, onDelete, projec
     <Dialog open={isOpen} onClose={onClose} className="relative z-50">
       <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
       <div className="fixed inset-0 flex items-center justify-center p-4 overflow-y-auto">
-        <Dialog.Panel className="w-full max-w-lg bg-white rounded-2xl shadow-xl p-6 my-4">
+        <Dialog.Panel className="w-full max-w-lg bg-white rounded-lg shadow-xl p-6 my-4">
           <Dialog.Title className="text-lg font-semibold text-slate-900 mb-5">
             {project ? 'Edit Project' : 'New Project'}
           </Dialog.Title>
@@ -62,7 +62,7 @@ export default function ProjectModal({ isOpen, onClose, onSave, onDelete, projec
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-1">Project Name *</label>
               <input
-                className={`w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 ${errors.name ? 'border-red-400' : 'border-slate-200'}`}
+                className={`w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 ${errors.name ? 'border-red-400' : 'border-slate-200'}`}
                 value={form.name}
                 onChange={e => set('name', e.target.value)}
                 placeholder="e.g. BINDER manuscript"
@@ -75,7 +75,7 @@ export default function ProjectModal({ isOpen, onClose, onSave, onDelete, projec
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-1">Bucket *</label>
                 <select
-                  className={`w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 ${errors.bucket ? 'border-red-400' : 'border-slate-200'}`}
+                  className={`w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 ${errors.bucket ? 'border-red-400' : 'border-slate-200'}`}
                   value={form.bucket}
                   onChange={e => set('bucket', e.target.value)}
                 >
@@ -86,7 +86,7 @@ export default function ProjectModal({ isOpen, onClose, onSave, onDelete, projec
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-1">Priority</label>
                 <select
-                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                   value={form.priority}
                   onChange={e => set('priority', e.target.value)}
                 >
@@ -100,7 +100,7 @@ export default function ProjectModal({ isOpen, onClose, onSave, onDelete, projec
                 <label className="block text-sm font-medium text-slate-700 mb-1">Start Date</label>
                 <input
                   type="date"
-                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                   value={form.startDate}
                   onChange={e => set('startDate', e.target.value)}
                 />
@@ -109,7 +109,7 @@ export default function ProjectModal({ isOpen, onClose, onSave, onDelete, projec
                 <label className="block text-sm font-medium text-slate-700 mb-1">End Date</label>
                 <input
                   type="date"
-                  className={`w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 ${errors.endDate ? 'border-red-400' : 'border-slate-200'}`}
+                  className={`w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 ${errors.endDate ? 'border-red-400' : 'border-slate-200'}`}
                   value={form.endDate}
                   onChange={e => set('endDate', e.target.value)}
                 />
@@ -121,7 +121,7 @@ export default function ProjectModal({ isOpen, onClose, onSave, onDelete, projec
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-1">Status</label>
                 <select
-                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
                   value={form.status}
                   onChange={e => set('status', e.target.value)}
                 >
@@ -132,7 +132,7 @@ export default function ProjectModal({ isOpen, onClose, onSave, onDelete, projec
               </div>
               <div>
                 <label className="block text-sm font-medium text-slate-700 mb-1">
-                  Progress — <span className="font-semibold text-indigo-600">{progress}%</span>
+                  Progress — <span className="font-semibold text-teal-600">{progress}%</span>
                 </label>
                 <input
                   type="range"
@@ -141,7 +141,7 @@ export default function ProjectModal({ isOpen, onClose, onSave, onDelete, projec
                   step="5"
                   value={progress}
                   onChange={e => set('progress', e.target.value)}
-                  className="w-full h-2 accent-indigo-600 cursor-pointer mt-2"
+                  className="w-full h-2 accent-teal-600 cursor-pointer mt-2"
                 />
                 <div className="flex justify-between text-xs text-slate-400 mt-0.5">
                   <span>0%</span><span>50%</span><span>100%</span>
@@ -152,7 +152,7 @@ export default function ProjectModal({ isOpen, onClose, onSave, onDelete, projec
             <div>
               <label className="block text-sm font-medium text-slate-700 mb-1">Notes</label>
               <textarea
-                className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
+                className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 resize-none"
                 rows={3}
                 value={form.notes}
                 onChange={e => set('notes', e.target.value)}
@@ -166,7 +166,7 @@ export default function ProjectModal({ isOpen, onClose, onSave, onDelete, projec
               {project && (
                 <button
                   onClick={handleDelete}
-                  className="text-sm text-red-500 hover:text-red-700 transition-colors"
+                  className="text-sm text-red-500 hover:text-red-700 transition-colors duration-150 ease-out"
                 >
                   Delete project
                 </button>
@@ -175,13 +175,13 @@ export default function ProjectModal({ isOpen, onClose, onSave, onDelete, projec
             <div className="flex gap-3">
               <button
                 onClick={onClose}
-                className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
+                className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors duration-150 ease-out"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSave}
-                className="px-4 py-2 text-sm font-medium bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+                className="px-4 py-2 text-sm font-medium bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors duration-150 ease-out"
               >
                 {project ? 'Save changes' : 'Add project'}
               </button>

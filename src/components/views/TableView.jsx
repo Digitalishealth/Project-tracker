@@ -54,7 +54,7 @@ export default function TableView({ projects, onEdit, onStatusChange }) {
 
   function SortIcon({ col }) {
     if (sort.col !== col) return <span className="text-slate-300 ml-1">↕</span>
-    return <span className="text-indigo-500 ml-1">{sort.dir === 'asc' ? '↑' : '↓'}</span>
+    return <span className="text-teal-600 ml-1">{sort.dir === 'asc' ? '↑' : '↓'}</span>
   }
 
   const completeCount = projects.filter(p => p.status === 'Complete').length
@@ -64,13 +64,13 @@ export default function TableView({ projects, onEdit, onStatusChange }) {
       {/* Filter bar */}
       <div className="flex flex-wrap gap-3 mb-5">
         <input
-          className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 w-56"
+          className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 w-56"
           placeholder="Search projects..."
           value={search}
           onChange={e => setSearch(e.target.value)}
         />
         <select
-          className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
           value={bucketF}
           onChange={e => setBucketF(e.target.value)}
         >
@@ -78,7 +78,7 @@ export default function TableView({ projects, onEdit, onStatusChange }) {
           {BUCKETS.map(b => <option key={b} value={b}>{b}</option>)}
         </select>
         <select
-          className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
           value={priorityF}
           onChange={e => setPriorityF(e.target.value)}
         >
@@ -86,7 +86,7 @@ export default function TableView({ projects, onEdit, onStatusChange }) {
           {PRIORITIES.map(p => <option key={p} value={p}>{p}</option>)}
         </select>
         <select
-          className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          className="border border-slate-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500"
           value={statusF}
           onChange={e => setStatusF(e.target.value)}
         >
@@ -96,7 +96,7 @@ export default function TableView({ projects, onEdit, onStatusChange }) {
         {completeCount > 0 && (
           <button
             onClick={() => setShowComplete(v => !v)}
-            className={`px-3 py-1.5 text-xs font-medium rounded-lg border transition-colors ${showComplete ? 'bg-emerald-50 border-emerald-200 text-emerald-700' : 'border-slate-200 text-slate-500 hover:bg-slate-50'}`}
+            className={`px-3 py-1.5 text-xs font-medium rounded-lg border transition-colors duration-150 ease-out ${showComplete ? 'bg-emerald-50 border-emerald-200 text-emerald-700' : 'border-slate-200 text-slate-500 hover:bg-slate-50'}`}
           >
             {showComplete ? `Hide completed (${completeCount})` : `Show completed (${completeCount})`}
           </button>
@@ -104,7 +104,7 @@ export default function TableView({ projects, onEdit, onStatusChange }) {
         <span className="text-sm text-slate-400 self-center ml-auto">{sorted.length} project{sorted.length !== 1 ? 's' : ''}</span>
       </div>
 
-      <div className="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-lg border border-slate-100 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
@@ -137,14 +137,14 @@ export default function TableView({ projects, onEdit, onStatusChange }) {
                 return (
                   <tr
                     key={p.id}
-                    className={`border-b border-slate-50 hover:bg-slate-50 transition-colors group ${isComplete ? 'opacity-60' : ''}`}
+                    className={`border-b border-slate-50 hover:bg-slate-50 transition-colors duration-150 ease-out group ${isComplete ? 'opacity-60' : ''}`}
                   >
                     <td className="px-4 py-3">
                       <div className="flex items-center gap-2">
                         {overdue && !isComplete && <span title="Overdue" className="w-1.5 h-1.5 rounded-full bg-red-500 flex-shrink-0" />}
                         {isComplete && <span className="text-emerald-500 text-xs">✓</span>}
                         <span
-                          className={`font-medium cursor-pointer hover:text-indigo-600 transition-colors ${isComplete ? 'line-through text-slate-400' : 'text-slate-900'}`}
+                          className={`font-medium cursor-pointer hover:text-teal-600 transition-colors duration-150 ease-out ${isComplete ? 'line-through text-slate-400' : 'text-slate-900'}`}
                           onClick={() => onEdit(p)}
                         >
                           {p.name}
@@ -161,7 +161,7 @@ export default function TableView({ projects, onEdit, onStatusChange }) {
                       <div className="flex items-center gap-2 min-w-20">
                         <div className="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
                           <div
-                            className={`h-full rounded-full ${isComplete ? 'bg-emerald-400' : 'bg-indigo-400'}`}
+                            className={`h-full rounded-full ${isComplete ? 'bg-emerald-400' : 'bg-teal-500'}`}
                             style={{ width: `${progress}%` }}
                           />
                         </div>
@@ -183,7 +183,7 @@ export default function TableView({ projects, onEdit, onStatusChange }) {
                     <td className="px-4 py-3">
                       <button
                         onClick={() => onEdit(p)}
-                        className="opacity-0 group-hover:opacity-100 text-slate-400 hover:text-indigo-600 transition-all text-xs font-medium"
+                        className="opacity-0 group-hover:opacity-100 text-slate-400 hover:text-teal-600 transition-all text-xs font-medium"
                       >
                         Edit
                       </button>

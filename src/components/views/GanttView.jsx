@@ -39,7 +39,7 @@ export default function GanttView({ projects, onEdit }) {
 
   return (
     <div className="p-6 h-full flex flex-col">
-      <div ref={scrollRef} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-auto flex-1">
+      <div ref={scrollRef} className="bg-white rounded-lg border border-slate-100 overflow-auto flex-1">
         <div style={{ minWidth: totalWidth + 224 }}>
           {/* Month header */}
           <div className="flex border-b border-slate-100 bg-slate-50 sticky top-0 z-20">
@@ -98,18 +98,18 @@ export default function GanttView({ projects, onEdit }) {
                   const colors = BUCKET_COLORS[p.bucket] || {}
                   const progress = p.progress ?? 0
                   return (
-                    <div key={p.id} className="flex border-b border-slate-50 hover:bg-slate-50 transition-colors">
+                    <div key={p.id} className="flex border-b border-slate-50 hover:bg-slate-50 transition-colors duration-150 ease-out">
                       <div className="w-56 flex-shrink-0 px-4 py-2.5 border-r border-slate-100">
                         <p
                           onClick={() => onEdit(p)}
-                          className="text-sm font-medium text-slate-800 truncate cursor-pointer hover:text-indigo-600 transition-colors"
+                          className="text-sm font-medium text-slate-800 truncate cursor-pointer hover:text-teal-600 transition-colors duration-150 ease-out"
                           title={p.name}
                         >
                           {p.name}
                         </p>
                         {progress > 0 && (
                           <div className="mt-1 h-1 bg-slate-100 rounded-full overflow-hidden w-full">
-                            <div className="h-full rounded-full bg-indigo-400" style={{ width: `${progress}%` }} />
+                            <div className="h-full rounded-full bg-teal-500" style={{ width: `${progress}%` }} />
                           </div>
                         )}
                       </div>
@@ -156,14 +156,14 @@ export default function GanttView({ projects, onEdit }) {
 
       {/* Unscheduled footer */}
       {unscheduled.length > 0 && (
-        <div className="mt-3 bg-white rounded-xl border border-slate-100 px-4 py-3">
+        <div className="mt-3 bg-white rounded-lg border border-slate-100 px-4 py-3">
           <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Unscheduled ({unscheduled.length})</p>
           <div className="flex flex-wrap gap-2">
             {unscheduled.map(p => (
               <button
                 key={p.id}
                 onClick={() => onEdit(p)}
-                className="text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-slate-600 hover:border-indigo-300 hover:text-indigo-600 transition-colors"
+                className="text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 text-slate-600 hover:border-teal-300 hover:text-teal-600 transition-colors duration-150 ease-out"
               >
                 {p.name}
               </button>

@@ -7,7 +7,7 @@ import { BUCKET_COLORS } from '../../constants/enums'
 
 function StatCard({ label, value, dotColor = 'bg-slate-300', accent }) {
   return (
-    <div className={`bg-white rounded-xl border shadow-sm px-4 py-4 flex items-center gap-3 ${accent && value > 0 ? 'border-red-200 bg-red-50/40' : 'border-slate-100'}`}>
+    <div className={`bg-white rounded-lg border px-4 py-4 flex items-center gap-3 ${accent && value > 0 ? 'border-red-200 bg-red-50/40' : 'border-slate-100'}`}>
       <span className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${dotColor}`} />
       <div className="min-w-0">
         <p className="text-xs text-slate-500 mb-0.5">{label}</p>
@@ -20,7 +20,7 @@ function StatCard({ label, value, dotColor = 'bg-slate-300', accent }) {
 function ProjectRow({ project, onEdit, onStatusChange, right }) {
   return (
     <li
-      className="px-5 py-3 flex items-center justify-between hover:bg-slate-50 transition-colors group"
+      className="px-5 py-3 flex items-center justify-between hover:bg-slate-50 transition-colors duration-150 ease-out group"
     >
       <div className="flex items-center gap-3 min-w-0 flex-1 cursor-pointer" onClick={() => onEdit(project)}>
         <div className="min-w-0">
@@ -65,7 +65,7 @@ export default function Dashboard({ projects, allProjects, onEdit, onAdd, onStat
 
   function Section({ title, items, badge, badgeColor = 'bg-slate-100 text-slate-500', dot, emptyMsg, renderRight }) {
     return (
-      <div className="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-lg border border-slate-100 overflow-hidden">
         <div className="px-5 py-3 border-b border-slate-100 flex items-center justify-between">
           <div className="flex items-center gap-2">
             {dot && <span className={`w-2 h-2 rounded-full ${dot}`} />}
@@ -97,7 +97,7 @@ export default function Dashboard({ projects, allProjects, onEdit, onAdd, onStat
     <div className="p-6 space-y-6">
       {/* Overdue alert */}
       {overdueProjects.length > 0 && (
-        <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 flex items-center gap-3">
+        <div className="bg-red-50 border border-red-200 rounded-lg px-4 py-3 flex items-center gap-3">
           <span className="text-red-500 font-bold">!</span>
           <p className="text-sm font-medium text-red-700">
             {overdueProjects.length} project{overdueProjects.length !== 1 ? 's are' : ' is'} overdue — update the status or extend the deadline.
@@ -169,7 +169,7 @@ export default function Dashboard({ projects, allProjects, onEdit, onAdd, onStat
             />
           )}
           {unscheduled.length > 0 && (
-            <div className="bg-white rounded-2xl border border-dashed border-slate-200 shadow-sm">
+            <div className="bg-white rounded-lg border border-dashed border-slate-200">
               <div className="px-5 py-4 border-b border-dashed border-slate-100 flex items-center justify-between">
                 <h2 className="text-sm font-semibold text-slate-500">Unscheduled</h2>
                 <span className="text-xs text-slate-400 bg-slate-50 px-2 py-0.5 rounded-full">{unscheduled.length}</span>
@@ -188,7 +188,7 @@ export default function Dashboard({ projects, allProjects, onEdit, onAdd, onStat
         {/* Right column */}
         <div className="space-y-4">
           {/* Bucket breakdown */}
-          <div className="bg-white rounded-2xl border border-slate-100 shadow-sm">
+          <div className="bg-white rounded-lg border border-slate-100">
             <div className="px-5 py-4 border-b border-slate-50">
               <h2 className="text-sm font-semibold text-slate-900">By Bucket</h2>
             </div>
@@ -213,7 +213,7 @@ export default function Dashboard({ projects, allProjects, onEdit, onAdd, onStat
 
           {/* Complete */}
           {complete.length > 0 && (
-            <div className="bg-white rounded-2xl border border-slate-100 shadow-sm">
+            <div className="bg-white rounded-lg border border-slate-100">
               <div className="px-5 py-4 border-b border-slate-50 flex items-center justify-between">
                 <h2 className="text-sm font-semibold text-slate-900">Completed</h2>
                 <span className="text-xs text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">{complete.length}</span>
@@ -223,7 +223,7 @@ export default function Dashboard({ projects, allProjects, onEdit, onAdd, onStat
                   <li
                     key={p.id}
                     onClick={() => onEdit(p)}
-                    className="px-5 py-2.5 flex items-center gap-2 hover:bg-slate-50 cursor-pointer transition-colors"
+                    className="px-5 py-2.5 flex items-center gap-2 hover:bg-slate-50 cursor-pointer transition-colors duration-150 ease-out"
                   >
                     <span className="text-emerald-500 text-sm">✓</span>
                     <span className="text-sm text-slate-500 line-through truncate">{p.name}</span>
@@ -235,7 +235,7 @@ export default function Dashboard({ projects, allProjects, onEdit, onAdd, onStat
 
           <button
             onClick={onAdd}
-            className="w-full flex items-center justify-center gap-2 py-3 border-2 border-dashed border-slate-200 rounded-2xl text-sm text-slate-400 hover:border-indigo-300 hover:text-indigo-500 transition-colors"
+            className="w-full flex items-center justify-center gap-2 py-3 border-2 border-dashed border-slate-200 rounded-lg text-sm text-slate-400 hover:border-teal-300 hover:text-teal-500 transition-colors duration-150 ease-out"
           >
             + Add new project
           </button>
