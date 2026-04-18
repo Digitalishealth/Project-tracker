@@ -8,6 +8,7 @@ export const SEED_PROJECTS = [
     endDate: '2026-06-30',
     status: 'Active',
     notes: '',
+    progress: 0,
   },
   {
     id: 'a1b2c3d4-0001-0000-0000-000000000002',
@@ -18,6 +19,7 @@ export const SEED_PROJECTS = [
     endDate: '2026-06-30',
     status: 'Active',
     notes: '',
+    progress: 0,
   },
   {
     id: 'a1b2c3d4-0001-0000-0000-000000000003',
@@ -28,6 +30,7 @@ export const SEED_PROJECTS = [
     endDate: '2026-06-30',
     status: 'Active',
     notes: '',
+    progress: 0,
   },
   {
     id: 'a1b2c3d4-0001-0000-0000-000000000004',
@@ -38,6 +41,7 @@ export const SEED_PROJECTS = [
     endDate: '2026-09-30',
     status: '',
     notes: '',
+    progress: 0,
   },
   {
     id: 'a1b2c3d4-0001-0000-0000-000000000005',
@@ -48,6 +52,7 @@ export const SEED_PROJECTS = [
     endDate: '2026-12-31',
     status: 'Upcoming',
     notes: '',
+    progress: 0,
   },
   {
     id: 'a1b2c3d4-0001-0000-0000-000000000006',
@@ -58,6 +63,7 @@ export const SEED_PROJECTS = [
     endDate: '2026-12-31',
     status: 'Upcoming',
     notes: '',
+    progress: 0,
   },
   {
     id: 'a1b2c3d4-0001-0000-0000-000000000007',
@@ -68,6 +74,7 @@ export const SEED_PROJECTS = [
     endDate: '2026-12-31',
     status: 'Upcoming',
     notes: '',
+    progress: 0,
   },
   {
     id: 'a1b2c3d4-0001-0000-0000-000000000008',
@@ -78,6 +85,7 @@ export const SEED_PROJECTS = [
     endDate: '2026-12-31',
     status: 'Upcoming',
     notes: '',
+    progress: 0,
   },
   {
     id: 'a1b2c3d4-0001-0000-0000-000000000009',
@@ -88,6 +96,7 @@ export const SEED_PROJECTS = [
     endDate: '2026-12-31',
     status: 'Upcoming',
     notes: '',
+    progress: 0,
   },
   {
     id: 'a1b2c3d4-0001-0000-0000-000000000010',
@@ -98,6 +107,7 @@ export const SEED_PROJECTS = [
     endDate: '2027-06-30',
     status: '',
     notes: '',
+    progress: 0,
   },
   {
     id: 'a1b2c3d4-0001-0000-0000-000000000011',
@@ -108,6 +118,7 @@ export const SEED_PROJECTS = [
     endDate: '2027-06-30',
     status: '',
     notes: '',
+    progress: 0,
   },
   {
     id: 'a1b2c3d4-0001-0000-0000-000000000012',
@@ -118,6 +129,7 @@ export const SEED_PROJECTS = [
     endDate: '2027-06-30',
     status: 'Background',
     notes: '',
+    progress: 0,
   },
   {
     id: 'a1b2c3d4-0001-0000-0000-000000000013',
@@ -128,6 +140,7 @@ export const SEED_PROJECTS = [
     endDate: '',
     status: '',
     notes: '',
+    progress: 0,
   },
   {
     id: 'a1b2c3d4-0001-0000-0000-000000000014',
@@ -138,6 +151,7 @@ export const SEED_PROJECTS = [
     endDate: '',
     status: '',
     notes: '',
+    progress: 0,
   },
   {
     id: 'a1b2c3d4-0001-0000-0000-000000000015',
@@ -148,5 +162,6 @@ export const SEED_PROJECTS = [
     endDate: '',
     status: '',
     notes: '',
+    progress: 0,
   },
 ]

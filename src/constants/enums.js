@@ -7,7 +7,7 @@ export const BUCKETS = [
 
 export const PRIORITIES = ['High', 'Medium-High', 'Medium', 'Low']
 
-export const STATUSES = ['Active', 'Upcoming', 'Background', '']
+export const STATUSES = ['Active', 'Upcoming', 'Background', '', 'Complete']
 
 export const BUCKET_COLORS = {
   'Health Policy': {
@@ -48,6 +48,7 @@ export const STATUS_COLORS = {
   Upcoming: { bg: 'bg-sky-100', text: 'text-sky-700' },
   Background: { bg: 'bg-slate-100', text: 'text-slate-600' },
   '': { bg: 'bg-gray-50', text: 'text-gray-400' },
+  Complete: { bg: 'bg-emerald-100', text: 'text-emerald-700' },
 }
 
 export const STATUS_LABELS = {
@@ -55,4 +56,5 @@ export const STATUS_LABELS = {
   Upcoming: 'Upcoming',
   Background: 'Background',
   '': 'Backlog',
+  Complete: 'Complete',
 }

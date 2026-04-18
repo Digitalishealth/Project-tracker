@@ -59,10 +59,10 @@ export default function AppShell() {
         />
         <main className="flex-1 overflow-auto">
           {activeView === 'dashboard' && (
-            <Dashboard projects={filtered} allProjects={projects} onEdit={openEdit} onAdd={openAdd} />
+            <Dashboard projects={filtered} allProjects={projects} onEdit={openEdit} onAdd={openAdd} onStatusChange={updateProject} />
           )}
           {activeView === 'table' && (
-            <TableView projects={filtered} onEdit={openEdit} />
+            <TableView projects={filtered} onEdit={openEdit} onStatusChange={updateProject} />
           )}
           {activeView === 'kanban' && (
             <KanbanView projects={filtered} onEdit={openEdit} onStatusChange={updateProject} />

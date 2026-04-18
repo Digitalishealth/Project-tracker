@@ -10,6 +10,7 @@ const EMPTY = {
   endDate: '',
   status: 'Active',
   notes: '',
+  progress: 0,
 }
 
 export default function ProjectModal({ isOpen, onClose, onSave, onDelete, project }) {
@@ -17,7 +18,7 @@ export default function ProjectModal({ isOpen, onClose, onSave, onDelete, projec
   const [errors, setErrors] = useState({})
 
   useEffect(() => {
-    setForm(project ? { ...project } : EMPTY)
+    setForm(project ? { ...EMPTY, ...project } : EMPTY)
     setErrors({})
   }, [project, isOpen])
 
@@ -29,13 +30,16 @@ export default function ProjectModal({ isOpen, onClose, onSave, onDelete, projec
     const e = {}
     if (!form.name.trim()) e.name = 'Project name is required'
     if (!form.bucket) e.bucket = 'Bucket is required'
+    if (form.startDate && form.endDate && form.endDate < form.startDate) {
+      e.endDate = 'End date must be after start date'
+    }
     return e
   }
 
   function handleSave() {
     const e = validate()
     if (Object.keys(e).length > 0) { setErrors(e); return }
-    onSave(form)
+    onSave({ ...form, progress: Number(form.progress) || 0 })
     onClose()
   }
 
@@ -43,11 +47,13 @@ export default function ProjectModal({ isOpen, onClose, onSave, onDelete, projec
     if (onDelete) { onDelete(project.id); onClose() }
   }
 
+  const progress = Number(form.progress) || 0
+
   return (
     <Dialog open={isOpen} onClose={onClose} className="relative z-50">
       <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
-      <div className="fixed inset-0 flex items-center justify-center p-4">
-        <Dialog.Panel className="w-full max-w-lg bg-white rounded-2xl shadow-xl p-6">
+      <div className="fixed inset-0 flex items-center justify-center p-4 overflow-y-auto">
+        <Dialog.Panel className="w-full max-w-lg bg-white rounded-2xl shadow-xl p-6 my-4">
           <Dialog.Title className="text-lg font-semibold text-slate-900 mb-5">
             {project ? 'Edit Project' : 'New Project'}
           </Dialog.Title>
@@ -60,6 +66,7 @@ export default function ProjectModal({ isOpen, onClose, onSave, onDelete, projec
                 value={form.name}
                 onChange={e => set('name', e.target.value)}
                 placeholder="e.g. BINDER manuscript"
+                autoFocus
               />
               {errors.name && <p className="text-xs text-red-500 mt-1">{errors.name}</p>}
             </div>
@@ -102,24 +109,44 @@ export default function ProjectModal({ isOpen, onClose, onSave, onDelete, projec
                 <label className="block text-sm font-medium text-slate-700 mb-1">End Date</label>
                 <input
                   type="date"
-                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  className={`w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 ${errors.endDate ? 'border-red-400' : 'border-slate-200'}`}
                   value={form.endDate}
                   onChange={e => set('endDate', e.target.value)}
                 />
+                {errors.endDate && <p className="text-xs text-red-500 mt-1">{errors.endDate}</p>}
               </div>
             </div>
 
-            <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Status</label>
-              <select
-                className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                value={form.status}
-                onChange={e => set('status', e.target.value)}
-              >
-                {STATUSES.map(s => (
-                  <option key={s} value={s}>{STATUS_LABELS[s]}</option>
-                ))}
-              </select>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1">Status</label>
+                <select
+                  className="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                  value={form.status}
+                  onChange={e => set('status', e.target.value)}
+                >
+                  {STATUSES.map(s => (
+                    <option key={s} value={s}>{STATUS_LABELS[s]}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-slate-700 mb-1">
+                  Progress — <span className="font-semibold text-indigo-600">{progress}%</span>
+                </label>
+                <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="5"
+                  value={progress}
+                  onChange={e => set('progress', e.target.value)}
+                  className="w-full h-2 accent-indigo-600 cursor-pointer mt-2"
+                />
+                <div className="flex justify-between text-xs text-slate-400 mt-0.5">
+                  <span>0%</span><span>50%</span><span>100%</span>
+                </div>
+              </div>
             </div>
 
             <div>
