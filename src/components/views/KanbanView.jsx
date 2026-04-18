@@ -46,9 +46,9 @@ function ProjectCard({ project, onEdit, isDragging }) {
       {progress > 0 && (
         <div className="mb-2">
           <div className="flex justify-between text-xs text-slate-400 mb-1">
-            <span>Progress</span><span>{progress}%</span>
+            <span>Progress</span><span className="tabular-nums">{progress}%</span>
           </div>
-          <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+          <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
             <div
               className={`h-full rounded-full ${isComplete ? 'bg-emerald-400' : 'bg-indigo-400'}`}
               style={{ width: `${progress}%` }}
@@ -124,11 +124,11 @@ export default function KanbanView({ projects, onEdit, onStatusChange }) {
         <div className="overflow-x-auto flex-1">
           <div className="flex gap-4 min-w-max pb-4 h-full">
             {visibleColumns.map(col => (
-              <div key={col.id} id={col.id} className="w-72 flex flex-col bg-slate-50 rounded-2xl border border-slate-100">
-                <div className="flex items-center gap-2 px-4 py-3 border-b border-slate-100">
+              <div key={col.id} id={col.id} className="w-72 flex flex-col bg-slate-50/80 rounded-xl border border-slate-200/70">
+                <div className="flex items-center gap-2 px-4 py-3 bg-white rounded-t-xl border-b border-slate-100">
                   <span className={`w-2 h-2 rounded-full ${col.color}`} />
                   <h3 className="text-sm font-semibold text-slate-700">{STATUS_LABELS[col.id]}</h3>
-                  <span className="ml-auto text-xs text-slate-400 bg-white border border-slate-100 px-2 py-0.5 rounded-full">
+                  <span className="ml-auto text-xs font-medium text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full tabular-nums">
                     {col.items.length}
                   </span>
                 </div>

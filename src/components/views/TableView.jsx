@@ -104,7 +104,7 @@ export default function TableView({ projects, onEdit, onStatusChange }) {
         <span className="text-sm text-slate-400 self-center ml-auto">{sorted.length} project{sorted.length !== 1 ? 's' : ''}</span>
       </div>
 
-      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
@@ -113,7 +113,7 @@ export default function TableView({ projects, onEdit, onStatusChange }) {
                   <th
                     key={col.key}
                     onClick={() => toggleSort(col.key)}
-                    className="text-left px-4 py-3 text-xs font-semibold text-slate-500 uppercase tracking-wider cursor-pointer select-none whitespace-nowrap hover:text-slate-700"
+                    className="text-left px-4 py-3 text-[11px] font-semibold text-slate-400 uppercase tracking-wider cursor-pointer select-none whitespace-nowrap hover:text-slate-600"
                   >
                     {col.label}<SortIcon col={col.key} />
                   </th>
@@ -158,14 +158,14 @@ export default function TableView({ projects, onEdit, onStatusChange }) {
                       <StatusSelect status={p.status} onChange={val => onStatusChange(p.id, { status: val })} />
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center gap-2 min-w-16">
-                        <div className="flex-1 h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                      <div className="flex items-center gap-2 min-w-20">
+                        <div className="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
                           <div
                             className={`h-full rounded-full ${isComplete ? 'bg-emerald-400' : 'bg-indigo-400'}`}
                             style={{ width: `${progress}%` }}
                           />
                         </div>
-                        <span className="text-xs text-slate-400 w-8 text-right">{progress}%</span>
+                        <span className="text-xs text-slate-400 w-8 text-right tabular-nums">{progress}%</span>
                       </div>
                     </td>
                     <td className="px-4 py-3 text-slate-500 whitespace-nowrap">{formatDate(p.startDate)}</td>

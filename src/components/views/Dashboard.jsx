@@ -5,12 +5,14 @@ import StatusSelect from '../shared/StatusSelect'
 import { isOverdue, isDueSoon, daysUntil, daysOverdue, formatDate } from '../../utils/dateHelpers'
 import { BUCKET_COLORS } from '../../constants/enums'
 
-function StatCard({ label, value, sub, accent }) {
+function StatCard({ label, value, dotColor = 'bg-slate-300', accent }) {
   return (
-    <div className={`bg-white rounded-2xl border shadow-sm p-5 ${accent ? 'border-red-200' : 'border-slate-100'}`}>
-      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">{label}</p>
-      <p className={`text-3xl font-bold ${accent && value > 0 ? 'text-red-600' : 'text-slate-900'}`}>{value}</p>
-      {sub && <p className="text-xs text-slate-400 mt-1">{sub}</p>}
+    <div className={`bg-white rounded-xl border shadow-sm px-4 py-4 flex items-center gap-3 ${accent && value > 0 ? 'border-red-200 bg-red-50/40' : 'border-slate-100'}`}>
+      <span className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${dotColor}`} />
+      <div className="min-w-0">
+        <p className="text-xs text-slate-500 mb-0.5">{label}</p>
+        <p className={`text-2xl font-bold leading-none ${accent && value > 0 ? 'text-red-600' : 'text-slate-900'}`}>{value}</p>
+      </div>
     </div>
   )
 }
@@ -63,16 +65,16 @@ export default function Dashboard({ projects, allProjects, onEdit, onAdd, onStat
 
   function Section({ title, items, badge, badgeColor = 'bg-slate-100 text-slate-500', dot, emptyMsg, renderRight }) {
     return (
-      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm">
-        <div className="px-5 py-4 border-b border-slate-50 flex items-center justify-between">
+      <div className="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+        <div className="px-5 py-3 border-b border-slate-100 flex items-center justify-between">
           <div className="flex items-center gap-2">
             {dot && <span className={`w-2 h-2 rounded-full ${dot}`} />}
-            <h2 className="text-sm font-semibold text-slate-900">{title}</h2>
+            <h2 className="text-sm font-semibold text-slate-800">{title}</h2>
           </div>
           <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${badgeColor}`}>{badge ?? items.length}</span>
         </div>
         {items.length === 0
-          ? <p className="text-sm text-slate-400 px-5 py-6 text-center">{emptyMsg || 'None'}</p>
+          ? <p className="text-sm text-slate-400 px-5 py-5 text-center">{emptyMsg || 'None'}</p>
           : (
             <ul className="divide-y divide-slate-50">
               {items.map(p => (
@@ -105,11 +107,11 @@ export default function Dashboard({ projects, allProjects, onEdit, onAdd, onStat
 
       {/* Stat cards */}
       <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-        <StatCard label="Active" value={active.length} />
-        <StatCard label="Upcoming" value={upcoming.length} />
-        <StatCard label="Background" value={background.length} />
-        <StatCard label="Due ≤ 30d" value={dueSoonProjects.length} />
-        <StatCard label="Overdue" value={overdueProjects.length} accent />
+        <StatCard label="Active" value={active.length} dotColor="bg-green-400" />
+        <StatCard label="Upcoming" value={upcoming.length} dotColor="bg-sky-400" />
+        <StatCard label="Background" value={background.length} dotColor="bg-slate-400" />
+        <StatCard label="Due ≤ 30 days" value={dueSoonProjects.length} dotColor="bg-orange-400" />
+        <StatCard label="Overdue" value={overdueProjects.length} dotColor="bg-red-400" accent />
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
