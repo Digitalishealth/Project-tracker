@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0.0",
+  "repository": "Digitalishealth/Project-tracker",
+  "default_branch": "claude/project-tracker-app-DRjQH",
+  "visibility": "public",
+  "purpose": "Project tracking application repository.",
+  "primary_domains": ["project-tracking", "operations", "application"],
+  "self_index": {"machine": "repo.index.json", "human": "REPOSITORY_INDEX.md"},
+  "related_indexes": [],
+  "known_entrypoints": {"docs": [], "skills": [], "agents": []},
+  "discovery_rules": ["Read repo.index.json first.", "Use REPOSITORY_INDEX.md for human context.", "Do not rely on directory enumeration for skill discovery."]
+}
